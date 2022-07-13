@@ -1,24 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as xlsx from 'xlsx';
+import * as path from 'path'
 
 function App() {
+  const filePath = path.join(__dirname,"excel", "nanikiru301.xlsx")
+  const nanikiru = xlsx.readFile(filePath)
+  console.log(filePath)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Hello world
     </div>
   );
 }
