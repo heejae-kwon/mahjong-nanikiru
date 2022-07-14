@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/mahjong-nanikiru/static/js/main.7a688128.chunk.js",
-    "main.js.map": "/mahjong-nanikiru/static/js/main.7a688128.chunk.js.map",
+    "main.js": "/mahjong-nanikiru/static/js/main.0eb26642.chunk.js",
+    "main.js.map": "/mahjong-nanikiru/static/js/main.0eb26642.chunk.js.map",
     "runtime-main.js": "/mahjong-nanikiru/static/js/runtime-main.ace9bde4.js",
     "runtime-main.js.map": "/mahjong-nanikiru/static/js/runtime-main.ace9bde4.js.map",
     "static/js/2.e8cdf161.chunk.js": "/mahjong-nanikiru/static/js/2.e8cdf161.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.ace9bde4.js",
     "static/js/2.e8cdf161.chunk.js",
-    "static/js/main.7a688128.chunk.js"
+    "static/js/main.0eb26642.chunk.js"
   ]
 }
