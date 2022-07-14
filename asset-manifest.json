@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/mahjong-nanikiru/static/css/main.073c9b0a.css",
-    "main.js": "/mahjong-nanikiru/static/js/main.0ead5c7e.js",
-    "static/js/787.8428cda9.chunk.js": "/mahjong-nanikiru/static/js/787.8428cda9.chunk.js",
-    "static/media/logo.svg": "/mahjong-nanikiru/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "main.js": "/mahjong-nanikiru/static/js/main.7a688128.chunk.js",
+    "main.js.map": "/mahjong-nanikiru/static/js/main.7a688128.chunk.js.map",
+    "runtime-main.js": "/mahjong-nanikiru/static/js/runtime-main.ace9bde4.js",
+    "runtime-main.js.map": "/mahjong-nanikiru/static/js/runtime-main.ace9bde4.js.map",
+    "static/js/2.e8cdf161.chunk.js": "/mahjong-nanikiru/static/js/2.e8cdf161.chunk.js",
+    "static/js/2.e8cdf161.chunk.js.map": "/mahjong-nanikiru/static/js/2.e8cdf161.chunk.js.map",
+    "static/js/3.3e762435.chunk.js": "/mahjong-nanikiru/static/js/3.3e762435.chunk.js",
+    "static/js/3.3e762435.chunk.js.map": "/mahjong-nanikiru/static/js/3.3e762435.chunk.js.map",
     "index.html": "/mahjong-nanikiru/index.html",
-    "main.073c9b0a.css.map": "/mahjong-nanikiru/static/css/main.073c9b0a.css.map",
-    "main.0ead5c7e.js.map": "/mahjong-nanikiru/static/js/main.0ead5c7e.js.map",
-    "787.8428cda9.chunk.js.map": "/mahjong-nanikiru/static/js/787.8428cda9.chunk.js.map"
+    "static/js/2.e8cdf161.chunk.js.LICENSE.txt": "/mahjong-nanikiru/static/js/2.e8cdf161.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.0ead5c7e.js"
+    "static/js/runtime-main.ace9bde4.js",
+    "static/js/2.e8cdf161.chunk.js",
+    "static/js/main.7a688128.chunk.js"
   ]
 }
