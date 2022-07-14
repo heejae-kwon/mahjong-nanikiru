@@ -49,6 +49,8 @@ function App() {
   };
 
   const selectProblem = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setAnswerState(false);
+    answerRef.current!.value = "";
     setProbNum(parseInt(event.target.value));
   };
 
@@ -57,7 +59,17 @@ function App() {
       // min and max included
       return Math.floor(Math.random() * (max - min + 1) + min);
     };
+    setAnswerState(false);
+    answerRef.current!.value = "";
     setProbNum(randomIntFromInterval(0, db.length - 1));
+  };
+
+  const makeCorrect = () => {
+    let correctAnswer =
+      (nanikiru.get("정답1") as string) + (nanikiru.get("정답2") || "");
+    correctAnswer = correctAnswer.replace(/ +/g, "");
+    answerRef.current!.value = correctAnswer;
+    checkAnswer();
   };
 
   let comments = [];
@@ -130,6 +142,9 @@ function App() {
             <td>
               {answerState &&
                 nanikiru.get("정답1") + " " + (nanikiru.get("정답2") || "")}
+              <button type="button" onClick={makeCorrect}>
+                정답확인
+              </button>
             </td>
           </tr>
           <tr>
