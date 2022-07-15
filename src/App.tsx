@@ -1,3 +1,20 @@
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TextField,
+  Toolbar,
+} from "@mui/material";
 import React, { useRef, useState } from "react";
 import nanikiru301 from "./data/nanikiru301.json";
 
@@ -13,6 +30,7 @@ function App() {
 
   const checkAnswer = () => {
     let userAnswer = answerRef.current?.value as string;
+    console.log(userAnswer);
     userAnswer = userAnswer.replace(/ +/g, "");
     let correctAnswer =
       (nanikiru.get("정답1") as string) + (nanikiru.get("정답2") || "");
@@ -29,7 +47,7 @@ function App() {
         tilePattern = tileStr[i];
       } else {
         const tile = tileStr[i] + tilePattern;
-        result.push(<span key={tile + i}>{table.get(tile)?.실표기}</span>);
+        result.push(table.get(tile)?.실표기);
       }
     }
     return result.reverse();
@@ -39,16 +57,16 @@ function App() {
     let selects = [];
     for (let i = 1; i <= db.length; ++i) {
       selects.push(
-        <option key={"op" + i} value={i - 1}>
+        <MenuItem key={"op" + i} value={i - 1}>
           {i}
-        </option>
+        </MenuItem>
       );
     }
 
     return selects;
   };
 
-  const selectProblem = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const selectProblem = (event: SelectChangeEvent) => {
     setAnswerState(false);
     answerRef.current!.value = "";
     setProbNum(parseInt(event.target.value));
@@ -65,11 +83,7 @@ function App() {
   };
 
   const makeCorrect = () => {
-    let correctAnswer =
-      (nanikiru.get("정답1") as string) + (nanikiru.get("정답2") || "");
-    correctAnswer = correctAnswer.replace(/ +/g, "");
-    answerRef.current!.value = correctAnswer;
-    checkAnswer();
+    setAnswerState(true);
   };
 
   let comments = [];
@@ -80,96 +94,134 @@ function App() {
     }
   }
 
+  let callArray = [];
+  for (let i = 1; i <= 4; ++i) {
+    const call = nanikiru.get(`${i}나키`);
+    if (call != null) {
+      const callTileArr = translateTileString(call as string);
+      const callTile = callTileArr.join("");
+      callArray.push(callTile);
+    }
+  }
+  const callList = callArray.join();
+
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <select onChange={selectProblem} value={probNum}>
-                {makeProbSelect()}
-              </select>
-            </td>
-            <td>
-              <button
-                type="button"
-                key={"randomButton"}
-                onClick={selectRandomProblem}
-              >
-                랜덤 문제
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>문제 {nanikiru.get("문제번호")}: </td>
-            <td>{nanikiru.get("조건")}</td>
-          </tr>
-          <tr>
-            <td>도라 표시패: </td>
-            <td>
-              <p>{translateTileString(nanikiru.get("도라표지") as string)}</p>
-            </td>
-          </tr>
-          <tr>
-            <td>손패: </td>
-            <td>
-              <p>
+    <>
+      <Toolbar>우자쿠식 나니키루 301</Toolbar>
+      <TableContainer>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <FormControl sx={{ minWidth: 75 }} size="small">
+                  <InputLabel id="demo-simple-select-label">
+                    문제번호
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    onChange={selectProblem}
+                    value={probNum.toString()}
+                    label="문제번호"
+                    autoWidth
+                  >
+                    {makeProbSelect()}
+                  </Select>
+                </FormControl>
+              </TableCell>
+              <TableCell>
+                <Button
+                  variant="contained"
+                  key={"randomButton"}
+                  onClick={selectRandomProblem}
+                >
+                  랜덤 문제
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>문제 {nanikiru.get("문제번호")}:</TableCell>
+              <TableCell>{nanikiru.get("조건")}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>도라 표시패:</TableCell>
+              <TableCell>
+                {translateTileString(nanikiru.get("도라표지") as string)}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>손패:</TableCell>
+              <TableCell>
                 {translateTileString(nanikiru.get("패") as string)} &ensp;
                 {translateTileString(nanikiru.get("쯔모") as string)}
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>입력값: </td>
-            <td>
-              <div>
-                <input
-                  type="text"
-                  title="입력"
-                  id="answer"
-                  name="answer"
-                  defaultValue={""}
-                  ref={answerRef}
-                />
-                <button type="button" onClick={checkAnswer}>
-                  제출
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>정답: </td>
-            <td>
-              {answerState &&
-                nanikiru.get("정답1") + " " + (nanikiru.get("정답2") || "")}
-              <button type="button" onClick={makeCorrect}>
-                정답확인
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>유효패: </td>
-            <td>{answerState && nanikiru.get("유효패")}</td>
-          </tr>
-          <tr>
-            <td>해설: </td>
-            <td>
-              <p>
+                <br />[{callList}]
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>입력값:</TableCell>
+              <TableCell>
+                <Grid container spacing={1} alignItems="center">
+                  <Grid item>
+                    <TextField
+                      sx={{ maxWidth: 140 }}
+                      size="small"
+                      title="입력"
+                      id="answer"
+                      label="정답 입력"
+                      helperText="ex) 7삭, 5만리치, 중"
+                      variant="outlined"
+                      name="answer"
+                      defaultValue={""}
+                      inputRef={answerRef}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" onClick={checkAnswer}>
+                      제출
+                    </Button>
+                  </Grid>
+                </Grid>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>정답:</TableCell>
+              <TableCell>
+                <Grid container spacing={1} alignItems="center">
+                  <Grid item>
+                    {answerState &&
+                      nanikiru.get("정답1") +
+                        " " +
+                        (nanikiru.get("정답2") || "")}
+                  </Grid>
+                  <Grid item>
+                    <Button variant="contained" onClick={makeCorrect}>
+                      정답확인
+                    </Button>
+                  </Grid>
+                </Grid>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>유효패:</TableCell>
+              <TableCell>{answerState && nanikiru.get("유효패")}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>해설:</TableCell>
+              <TableCell>
                 {answerState &&
                   comments.map((val, idx) => {
                     return (
-                      <span key={(val as string) + idx}>
+                      <span key={val + idx.toString()}>
                         {val}
                         <br />
                       </span>
                     );
                   })}
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 
