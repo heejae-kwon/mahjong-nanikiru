@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/mahjong-nanikiru/static/js/main.8f7b26e4.chunk.js",
-    "main.js.map": "/mahjong-nanikiru/static/js/main.8f7b26e4.chunk.js.map",
+    "main.js": "/mahjong-nanikiru/static/js/main.80008754.chunk.js",
+    "main.js.map": "/mahjong-nanikiru/static/js/main.80008754.chunk.js.map",
     "runtime-main.js": "/mahjong-nanikiru/static/js/runtime-main.f788f118.js",
     "runtime-main.js.map": "/mahjong-nanikiru/static/js/runtime-main.f788f118.js.map",
-    "static/js/2.ae995297.chunk.js": "/mahjong-nanikiru/static/js/2.ae995297.chunk.js",
-    "static/js/2.ae995297.chunk.js.map": "/mahjong-nanikiru/static/js/2.ae995297.chunk.js.map",
+    "static/js/2.480ecd7a.chunk.js": "/mahjong-nanikiru/static/js/2.480ecd7a.chunk.js",
+    "static/js/2.480ecd7a.chunk.js.map": "/mahjong-nanikiru/static/js/2.480ecd7a.chunk.js.map",
     "index.html": "/mahjong-nanikiru/index.html",
-    "static/js/2.ae995297.chunk.js.LICENSE.txt": "/mahjong-nanikiru/static/js/2.ae995297.chunk.js.LICENSE.txt"
+    "static/js/2.480ecd7a.chunk.js.LICENSE.txt": "/mahjong-nanikiru/static/js/2.480ecd7a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f788f118.js",
-    "static/js/2.ae995297.chunk.js",
-    "static/js/main.8f7b26e4.chunk.js"
+    "static/js/2.480ecd7a.chunk.js",
+    "static/js/main.80008754.chunk.js"
   ]
 }
